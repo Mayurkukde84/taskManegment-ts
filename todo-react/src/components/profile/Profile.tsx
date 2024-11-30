@@ -28,7 +28,7 @@ const Profile: FC = (): ReactElement => {
         }}
       >
         <Typography variant="h4" color="text.primary">
-          J
+          K
         </Typography>
       </Avatar>
     </Box>
