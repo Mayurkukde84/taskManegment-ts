@@ -1,17 +1,13 @@
 import React, { FC, ReactElement } from 'react';
 import { Box, Typography } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
+// import PropTypes from 'prop-types'
 
-const Profile: FC = (): ReactElement => {
-  {
-    // Avatar
-  }
-  {
-    // Name
-  }
-  {
-    // Welcome message
-  }
+interface IProfile{
+    name?:string
+}
+const Profile: FC<IProfile> = (props): ReactElement => {
+ const {name='John'} = props
   return (
     <Box
       display="flex"
@@ -28,11 +24,21 @@ const Profile: FC = (): ReactElement => {
         }}
       >
         <Typography variant="h4" color="text.primary">
-          K
+          {`${name.substring(0,1)}`}
         </Typography>
       </Avatar>
+      <Typography variant="h6" color="text.primary">
+        {`Welcome,${name}`}
+      </Typography>
+      <Typography>
+        This is your personal tasks manager
+      </Typography>
     </Box>
   );
 };
 
 export default Profile;
+
+// Profile.propTypes = {
+//     name:PropTypes.string.isRequired,
+// }
