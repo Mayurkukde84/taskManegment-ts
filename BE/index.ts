@@ -50,7 +50,7 @@ export const AppDataSource = new DataSource({
 const port = process.env.PORT;
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript Server');
+  res.send('Express  + TypeScript Server');
 });
 
 AppDataSource.initialize()
