@@ -1,8 +1,8 @@
-import { Request,Response,Router } from "express";
+import { Router } from 'express';
+import { getAllTasks } from './tasks.controller';
 
-export const tasksRouter:Router = Router()
+/*Fire the router function*/
+export const tasksRouter: Router = Router();
 
-
-tasksRouter.get('/tasks', (req: Request, res: Response) => {
-    res.send('Express  + TypeScript Server');
-  });
+// Create a default route.
+tasksRouter.get('/tasks', getAllTasks);
