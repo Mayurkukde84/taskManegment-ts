@@ -1,12 +1,12 @@
 import express, {
   Express,
-  Request,
-  Response,
 } from 'express';
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
 import cors from 'cors'
 import bodyParser from 'body-parser';
+import { Task } from './src/tasks/tasks.enitiy';
+import { tasksRouter } from './src/tasks/tasks.router';
 
 const app: Express = express();
 dotenv.config();
@@ -25,6 +25,7 @@ export const AppDataSource = new DataSource({
   username: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DB,
+  entities:[Task],
   synchronize: true,
   //   be very careful with this synchronize property.
 
@@ -49,9 +50,7 @@ export const AppDataSource = new DataSource({
 
 const port = process.env.PORT;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express  + TypeScript Server');
-});
+
 
 AppDataSource.initialize()
   .then(() => {
@@ -63,3 +62,6 @@ AppDataSource.initialize()
       'Error during Data Source initialization',
     );
   });
+
+
+  app.use('/',tasksRouter)
