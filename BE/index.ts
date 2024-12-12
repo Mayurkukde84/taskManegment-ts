@@ -5,6 +5,8 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { Task } from './src/tasks/tasks.entity';
 import { tasksRouter } from './src/tasks/tasks.router';
+import morgan from 'morgan';
+
 
 const app: Express = express();
 dotenv.config();
@@ -14,6 +16,8 @@ app.use(bodyParser.json());
 
 //Use cors install types as well
 app.use(cors());
+
+app.use(morgan('dev'))
 
 //create database connection
 export const AppDataSource = new DataSource({
